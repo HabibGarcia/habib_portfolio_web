@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*JERARQUÍA DE COLORES*/
+:root {
+  --color-primary: 74 125 255;   /* Azul principal #4A7DFF */
+  --color-secondary: 115 0 255; /* Morado secundario #9d36ff */
+  --color-background: 18 18 18; /* Fondo oscuro actual #121212 */
+  --color-darker: 5 5 5; /* Fondo más oscuro #050505 */
+}
+
+/*TEMA ALTERNATIVO*/
+[data-theme="alt"] {
+  --color-primary: 74 125 255; 
+  --color-secondary: 115 0 255;
+  --color-background: 202, 198, 204;
+  --color-darker: 74 125 255;
+}
+/* Nueva animación de levitación */
+@keyframes levitacion {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+.animacion-flotar {
+  animation: levitacion 6s ease-in-out infinite;
+}
