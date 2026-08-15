@@ -33,7 +33,7 @@ export default function Experience() {
 
       {/* TIMELINE */}
       <div className="relative pl-8 md:pl-0">
-        {/* La línea vertical central (visible en escritorio, a la izquierda en móvil) */}
+        {/* La línea vertical central*/}
         <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gray-800 md:-translate-x-1/2 rounded-full"></div>
 
         <div className="space-y-12">

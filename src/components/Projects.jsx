@@ -74,7 +74,7 @@ export default function Projects() {
 
              {/* Lado Derecho: Ilustración del Personaje */}
              <div className="w-full md:w-2/5 flex justify-center items-center relative">
-                {/* Opcional: Un brillo sutil detrás del personaje */}
+                {/* Brillo detras del personaje */}
                 <div className="absolute inset-0 bg-secondary/20 blur-3xl rounded-full scale-75"></div>
                 
                 <img 

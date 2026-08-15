@@ -77,7 +77,6 @@ export default function Skills() {
            </div>
         </div>
 
-        {/* Padding reducido (p-4) para que la ventana abrace el carrusel y no deje espacio muerto */}
         <div className="p-4 bg-background/70 overflow-hidden relative rounded-b-lg">
           
           <div className="w-full inline-flex flex-nowrap [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">

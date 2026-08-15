@@ -4,7 +4,7 @@ export default function Banner() {
   {/**Creamos el estado para saber si el tema alternativo está activo */}
   const [isAltTheme, setIsAltTheme] = useState(false);
   
-  {/** Este efecto cambia el atributo del documento cuando el estado cambia*/}
+  {/** Cambia el atributo del documento cuando el estado cambia*/}
   useEffect(() => {
     if (isAltTheme) {
       document.documentElement.setAttribute('data-theme', 'alt');
@@ -62,7 +62,7 @@ export default function Banner() {
             </a>
             {/* Botón Descargar CV (EN) */}
             <a 
-              href="/CV_Habib_EN.pdf" // <- Asegúrate de tener este archivo en la carpeta public
+              href="/CV_Habib_EN.pdf" // pdf
               download="CV_Habib_Garcia_EN.pdf"
               className="bg-secondary hover:bg-white text-white hover:text-black border-2 border-black rounded-lg font-bold text-xs md:text-sm py-2 px-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all flex items-center gap-2"
             >

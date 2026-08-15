@@ -4,10 +4,10 @@ import { projectsData } from '../data/portfolioData';
 export default function ProjectDetail() {
   const { id } = useParams();
   
-  // Buscamos el proyecto exacto por su ID
+  // Buscamos por id
   const project = projectsData.find(p => p.id === id);
 
-  // Si el usuario introduce una URL falsa (ej. /project/PRO_999), lo devolvemos al Home
+  // Control de errores
   if (!project) {
     return <Navigate to="/" />;
   }
@@ -15,14 +15,10 @@ export default function ProjectDetail() {
   return (
     <div className="relative min-h-screen font-sans bg-background">
       
-      {/* =========================================
-          FONDO DE REJILLA GLOBAL
-          ========================================= */}
+      {/* FONDO DE REJILLA GLOBAL*/}
       <div className="fixed inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
-      {/* =========================================
-          CONTENIDO PRINCIPAL
-          ========================================= */}
+      {/* CONTENIDO PRINCIPAL */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-12 md:py-20 flex flex-col gap-12">
         
         {/* NAVEGACIÓN SUPERIOR: Botón de Volver */}
@@ -56,7 +52,7 @@ export default function ProjectDetail() {
             </div>
           </div>
           
-          {/* Botones de Enlace (Solo se muestran si existen en tus datos) */}
+          {/* Botones de Enlace*/}
           <div className="flex gap-4">
             {project.githubLink && (
               <a href={project.githubLink} target="_blank" rel="noreferrer" className="bg-white hover:bg-gray-300 text-black border-4 border-black rounded-lg font-black text-base py-3 px-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-y-1 hover:translate-x-1 transition-all">
@@ -71,7 +67,7 @@ export default function ProjectDetail() {
           </div>
         </div>
 
-        {/* ZONA DE ANÁLISIS TÉCNICO (Caja Estilo Ventana) */}
+        {/* ZONA DE ANÁLISIS TÉCNICO*/}
         <div className="border-4 border-black rounded-xl bg-[#121212] p-0 relative z-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           
           {/* Barra de la Ventana */}
@@ -88,7 +84,7 @@ export default function ProjectDetail() {
 
           <div className="p-8 md:p-12 flex flex-col md:flex-row gap-12 items-start">
             
-            {/* Lado Izquierdo: Ilustración del personaje (Más grande para esta página) */}
+            {/* Lado Izquierdo: Ilustración del personaje*/}
             <div className="w-full md:w-1/3 flex justify-center">
               <div className="relative">
                 <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-110"></div>

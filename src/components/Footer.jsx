@@ -1,8 +1,6 @@
 export default function Footer() {
   return (
     <footer id="contact" className="w-full bg-darker relative z-20 border-t-4 border-secondary pt-16 pb-8 mt-20 shadow-[0_-15px_30px_rgba(115,0,255,0.1)]">
-      
-      {/* Contenedor centralizado para mantener los márgenes de las otras secciones */}
       <div className="max-w-5xl mx-auto px-4">
         
         {/**Logo*/}
