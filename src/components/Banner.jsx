@@ -24,7 +24,7 @@ export default function Banner() {
         {/* Capas de Fondo */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[url('/portafoliobanner.png')] bg-cover bg-[85%_center] md:bg-center bg-no-repeat"></div>
-          {/*<div className="absolute inset-0 bg-darker/40 transition-colors duration-500"></div> */}
+          <div className="absolute inset-0 bg-darker/10 transition-colors duration-500"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-darker/60 via-transparent to-transparent transition-colors duration-500"></div>
         </div>
 
@@ -53,7 +53,7 @@ export default function Banner() {
             <a 
               href="/CV_Habib_Garcia.pdf"
               download="CV_Habib_Garcia.pdf"
-              className="bg-primary hover:bg-white text-white hover:text-secondary border-2 border-darkerButton rounded-lg font-bold text-xs md:text-sm py-2 px-4 shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all flex items-center gap-2"
+              className="bg-primary hover:bg-white text-white hover:text-secondary rounded-lg font-bold text-xs md:text-sm py-2 px-4 shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all flex items-center gap-2"
               >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               CV
@@ -62,7 +62,7 @@ export default function Banner() {
             {/* Toggle Switch del Sol */}
             <button 
               onClick={toggleTheme}
-              className="hidden md:flex w-10 h-10 rounded-lg bg-primary items-center justify-center border-2 border-darkerButton hover:bg-white text-white hover:text-secondary shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all gap-2" aria-label="Toggle Theme"
+              className="hidden md:flex w-10 h-10 rounded-lg bg-primary items-center justify-center hover:bg-white text-white hover:text-secondary shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all gap-2" aria-label="Toggle Theme"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
@@ -114,7 +114,7 @@ export default function Banner() {
           </div>
           
           {/* Botón retro */}
-          <a className="bg-primary hover:bg-white text-white hover:text-secondary border-4 border-darkerButton rounded-lg font-black text-lg py-3 px-10 shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all" href="#about"> 
+          <a className="bg-primary hover:bg-white text-white hover:text-secondary rounded-lg font-black text-lg py-3 px-10 shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all" href="#about"> 
             Sobre mí
           </a>
         </div>

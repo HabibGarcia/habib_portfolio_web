@@ -20,7 +20,7 @@
   --color-background: 217 217 217; /* Gris muy claro #f8fafc */
   --color-darker: 115 0 255;    /* Gris suave #e6ebf0 */
    --color-darker-button: 217 217 217; /* Fondo más oscuro #050505 */
-  --text-color: 41 41 41;         /* Gris oscuro #141419 */
+  --text-color: 87 87 87;         /* Gris oscuro #141419 */
   --text-color-secondary: 105 105 105; /* Gris medio #50555f */
 }
 /* Nueva animación de levitación */
@@ -30,4 +30,11 @@
 }
 .animacion-flotar {
   animation: levitacion 6s ease-in-out infinite;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
