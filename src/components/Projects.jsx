@@ -7,15 +7,14 @@ export default function Projects() {
   const activeProject = projectsData.find(p => p.id === activeTab);
 
   return (
-    // Agregamos overflow-hidden en móvil para evitar que las sombras generen scroll horizontal
-    <section id="projects" className="py-10 px-4 max-w-5xl mx-auto mt-10 overflow-hidden md:overflow-visible transition-colors duration-500">
+    <section id="projects" className="py-10 px-4 max-w-5xl mx-auto mt-6 overflow-hidden md:overflow-visible transition-colors duration-500">
       
       {/* Título derecho */}
       <div className="flex justify-end mb-4 md:mb-2 md:pl-10">
-        <div className="flex items-center gap-4 border-2 border-darker bg-background/90 backdrop-blur-md px-4 md:px-6 py-2 md:py-3 rounded-2xl transition-colors duration-500 shadow-[4px_4px_0_0_rgb(var(--color-darker))]">
-          <span className="text-secondary font-black text-xl animate-pulse">{'>'}</span>
-          <h3 className="text-xl md:text-3xl font-black text-textmain tracking-widest uppercase">Proyectos</h3>
-        </div>
+          <div className="flex items-center gap-4 bg-background/90 backdrop-blur-md px-4 md:px-6 py-2 md:py-3 rounded-2xl transition-colors duration-500 shadow-[6px_6px_0_0_rgb(var(--text-color))]">
+              <span className="text-secondary font-black text-xl animate-pulse">{'>'}</span>
+              <h3 className="text-xl md:text-3xl font-black text-textmain tracking-widest uppercase">Proyectos</h3>
+          </div>
       </div>
 
       {/* PESTAÑA Y VENTANA */}
@@ -26,10 +25,10 @@ export default function Projects() {
             <button
               key={project.id}
               onClick={() => setActiveTab(project.id)}
-              className={`shrink-0 px-6 md:px-10 py-2 font-bold text-xs md:text-sm border-4 border-darker rounded-t-lg border-b-0 transition-all ${
+              className={`shrink-0 px-6 md:px-10 py-2 font-bold text-xs md:text-sm border-4 border-textmain rounded-t-lg border-b-0 transition-all ${
                 activeTab === project.id
                   ? 'bg-primary text-white h-12 mt-0' 
-                  : 'bg-primary/20 text-textsecondary hover:bg-primary h-10 mt-2 hover:text-white' 
+                  : 'bg-primary/20 border-textmain/30 text-textsecondary hover:bg-primary h-10 mt-2 hover:text-white' 
               }`}
             >
               {project.id}
@@ -38,16 +37,15 @@ export default function Projects() {
         </div>
 
         {/* Caja Principal de la Ventana */}
-        <div className="border-4 border-darker rounded-xl bg-background/80 p-0 relative z-0 shadow-[4px_4px_0px_0px_rgb(var(--color-darker))] md:shadow-[8px_8px_0px_0px_rgb(var(--color-darker))] transition-colors duration-500">
+        <div className="border-4 border-textmain rounded-xl bg-background/80 p-0 relative z-0 shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] transition-colors duration-500">
           
           {/* Barra superior */}
-          <div className="bg-primary border-b-4 rounded-t-lg border-darker p-2 flex justify-end gap-2 px-4 transition-colors duration-500">
-             <div className="w-5 h-5 border-2 border-darker bg-background flex items-center justify-center font-bold text-xs cursor-pointer hover:bg-white text-textmain transition-colors">_</div>
-             <div className="w-5 h-5 border-2 border-darker bg-background flex items-center justify-center font-bold text-xs cursor-pointer hover:bg-darker hover:text-white transition-colors text-textmain">X</div>
+          <div className="bg-primary border-b-4 rounded-t-lg border-textmain p-2 flex justify-end gap-2 px-4 transition-colors duration-500">
+              <div className="w-5 h-5 border-2 border-black bg-white flex items-center justify-center font-bold text-xs cursor-pointer hover:bg-gray-200">_</div>
+                 <div className="w-5 h-5 border-2 border-black bg-white flex items-center justify-center font-bold text-xs cursor-pointer hover:bg-black hover:text-white transition-colors">X</div>
           </div>
 
           {/* Contenido interior */}
-          {/* Se redujo el padding en móvil (p-6) y se mantiene amplio en escritorio (md:p-12) */}
           <div className="p-6 md:p-12 bg-transparent flex flex-col md:flex-row gap-8 md:gap-4 items-center">
              
              {/* Lado Izquierdo: Textos */}
@@ -61,7 +59,7 @@ export default function Projects() {
                   {activeProject.tech.map((tech, index) => (
                     <span 
                       key={index} 
-                      className="font-mono text-xs md:text-sm font-bold tracking-widest mb-2 inline-block w-fit px-3 py-1 rounded-md border-2 border-darker bg-background text-secondary shadow-[2px_2px_0px_0px_rgb(var(--color-darker))] hover:shadow-none hover:-translate-y-[2px] hover:-translate-x-[2px] transition-all"
+                      className="font-mono text-xs md:text-sm font-bold tracking-widest mb-2 inline-block w-fit px-4 py-1 rounded-full border-2 border-secondary bg-secondary/5 text-secondary hover:bg-secondary hover:text-white hover:shadow-[0_0_8px_rgb(var(--color-secondary))] transition-all"
                     >
                       {tech}
                     </span>
@@ -70,7 +68,7 @@ export default function Projects() {
 
                <Link 
                 to={`/project/${activeProject.id}`} 
-                className="inline-block bg-primary hover:bg-background text-white hover:text-primary border-2 md:border-4 border-darkerButton rounded-lg font-black text-base md:text-lg py-3 px-8 shadow-[4px_4px_0px_0px_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all text-center"
+                className="bg-primary hover:bg-white text-white hover:text-secondary rounded-lg font-black text-lg py-3 px-6 shadow-[4px_4px_0_0_rgb(var(--text-color))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all"
                >
                  Leer más
                 </Link>
@@ -96,7 +94,7 @@ export default function Projects() {
         {activeProject.images.map((img, index) => (
           <div 
             key={index}
-            className="border-4 border-darker rounded-xl overflow-hidden bg-background shadow-[4px_4px_0px_0px_rgb(var(--color-darker))] md:shadow-[6px_6px_0px_0px_rgb(var(--color-darker))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all group cursor-pointer aspect-video relative"
+            className="border-4 border-textmain rounded-xl overflow-hidden bg-background shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all group cursor-pointer aspect-video relative"
           >
             {/* Imagen del proyecto */}
             <img 

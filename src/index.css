@@ -10,7 +10,7 @@
   --color-darker: 5 5 5; /* Fondo más oscuro #050505 */
   --color-darker-button: 5 5 5; /* Fondo más oscuro #050505 */
   --text-color: 255 255 255; /* Color de texto blanco */
-  --text-color-secondary: 200 200 200; /* Color de texto secundario gris claro */
+  --text-color-secondary: 230 230 230; /* Color de texto secundario gris claro */
 }
 
 /*TEMA ALTERNATIVO*/
@@ -19,9 +19,9 @@
   --color-secondary: 115 0 255;   /* Mismo morado original */
   --color-background: 217 217 217; /* Gris muy claro #f8fafc */
   --color-darker: 115 0 255;    /* Gris suave #e6ebf0 */
-   --color-darker-button: 217 217 217; /* Fondo más oscuro #050505 */
-  --text-color: 87 87 87;         /* Gris oscuro #141419 */
-  --text-color-secondary: 105 105 105; /* Gris medio #50555f */
+  --color-darker-button: 217 217 217; /* Fondo más oscuro #050505 */
+  --text-color: 5 5 5;         /* Gris oscuro #141419 */
+  --text-color-secondary: 50 50 50; /* Gris medio #50555f */
 }
 /* Nueva animación de levitación */
 @keyframes levitacion {

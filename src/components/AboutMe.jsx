@@ -17,16 +17,16 @@ export default function AboutMe() {
         {/* Lado Derecho: Caja de Texto*/}
         <div className="w-full md:w-5/12 relative flex flex-col gap-2">
           {/**Título About me derecho */}
-          <div className="flex justify-end mb-2 pl-10">
-            <div className="flex items-center gap-4 border-2 border-white/10 bg-background/90 backdrop-blur-md px-6 py-3 rounded-2xl transition-colors duration-500">
-            <span className="text-secondary font-black text-xl animate-pulse">{'>'}</span>
-            <h3 className="text-2xl md:text-3xl font-black text-textmain tracking-widest uppercase">Sobre mí</h3>
+          <div className="flex justify-end mb-4 md:mb-2 md:pl-10">
+            <div className="flex items-center gap-4 bg-background/90 backdrop-blur-md px-4 md:px-6 py-2 md:py-3 rounded-2xl transition-colors duration-500 shadow-[6px_6px_0_0_rgb(var(--text-color))]">
+              <span className="text-secondary font-black text-xl animate-pulse">{'>'}</span>
+              <h3 className="text-xl md:text-3xl font-black text-textmain tracking-widest uppercase">Sobre mí</h3>
+            </div>
           </div>
-        </div>
           {/* Contenedor principal con sombra dura y borde grueso */}
-          <div className="border-4 border-black rounded-xl bg-background/90 p-0 relative z-0 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] backdrop-blur-sm">
+          <div className="border-4 border-textmain rounded-xl bg-background/90 p-0 relative z-0 shadow-[6px_6px_0px_0px_rgba(var(--text-color-secondary)/0.2)] backdrop-blur-sm">
             {/* Barra superior estilo ventana */}
-            <div className="bg-primary border-b-4 rounded-t-lg border-black p-2 flex justify-between items-center px-4">
+            <div className="bg-primary border-b-4 rounded-t-lg border-textmain p-2 flex justify-between items-center px-4">
                {/* Detalles del "Tab" a la izquierda */}
                <div className="flex items-center gap-2"></div>
                {/* Botones de control a la derecha */}

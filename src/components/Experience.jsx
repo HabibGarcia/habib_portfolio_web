@@ -6,7 +6,7 @@ export default function Experience() {
       title: 'Full-Stack Developer & Web Administrator Intern',
       company: 'Essenzial',
       description: 'Unification of a comprehensive digital platform for a medical society as an interim educational project. Development of custom plugins and backend synchronization. Integration of complex systems including e-commerce tools, learning management systems (LMS), and synchronization of CRM tools and ERP systems.',
-      color: 'bg-primary',
+      color: 'bg-secondary',
       shadow: 'shadow-[0_0_15px_rgba(74,125,255,0.6)]'
     },
     {
@@ -15,7 +15,7 @@ export default function Experience() {
       title: 'Grado Superior en Desarrollo de Aplicaciones Web',
       company: 'Formación Académica',
       description: ':p',
-      color: 'bg-secondary',
+      color: 'bg-primary',
       shadow: 'shadow-[0_0_15px_rgba(239,75,76,0.6)]'
     }
   ];
@@ -25,10 +25,10 @@ export default function Experience() {
       
       {/* TÍTULO */}
       <div className="flex items-center mb-8">
-            <div className="flex items-center gap-4 border-2 border-white/10 bg-black/40 backdrop-blur-md px-6 py-3 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-            <span className="text-secondary font-black text-xl animate-pulse">{'>'}</span>
-            <h3 className="text-2xl md:text-3xl font-black text-white tracking-widest uppercase">Experience</h3>
-        </div>
+            <div className="flex items-center gap-4 bg-background/90 backdrop-blur-md px-4 md:px-6 py-2 md:py-3 rounded-2xl transition-colors duration-500 shadow-[6px_6px_0_0_rgb(var(--text-color))]">
+              <span className="text-secondary font-black text-xl animate-pulse">{'>'}</span>
+              <h3 className="text-xl md:text-3xl font-black text-textmain tracking-widest uppercase">Experiencia</h3>
+            </div>
       </div>
 
       {/* TIMELINE */}
@@ -56,21 +56,21 @@ export default function Experience() {
 
               {/* Tarjeta de Contenido */}
               <div className="w-full md:w-5/12 pl-8 md:pl-0 md:mt-0 group">
-                <div className="border-4 border-black rounded-xl bg-background/90 backdrop-blur-sm p-6 md:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-y-[6px] hover:translate-x-[6px] transition-all duration-300 relative overflow-hidden">
+                <div className="border-4 border-textmain rounded-xl bg-background/90 backdrop-blur-sm p-6 md:p-8 shadow-[6px_6px_0px_0px_rgba(var(--text-color-secondary)/0.2)] hover:shadow-none hover:translate-y-[6px] hover:translate-x-[6px] transition-all duration-300 relative overflow-hidden">
                   
                   {/* Acento de color en el borde superior interno */}
-                  <div className={`absolute top-0 left-0 w-full h-1 ${item.color}`}></div>
+                  <div className={`absolute top-0 left-0 w-full h-4 ${item.color}`}></div>
 
                   <div className="flex flex-col mb-4">
                     {/* Fecha estilo terminal */}
-                    <span className={`font-mono text-sm font-bold tracking-widest mb-2 inline-block w-fit px-3 py-1 rounded-md border border-gray-700 bg-black ${index % 2 === 0 ? 'text-primary' : 'text-secondary'}`}>
+                    <span className={`font-mono text-xs md:text-sm font-bold tracking-widest mb-2 inline-block w-fit px-4 py-1 rounded-full border-2 bg-secondary/5 ${index % 2 === 0 ? 'text-secondary border-secondary' : 'text-primary border-primary'} transition-colors duration-500`}>
                       {item.date}
                     </span>
-                    <h4 className="text-2xl font-black text-white tracking-tight leading-tight mb-1">{item.title}</h4>
-                    <span className="text-gray-400 font-bold text-sm tracking-wide uppercase">{item.company}</span>
+                    <h4 className="text-2xl font-black text-textmain tracking-tight leading-tight mb-1">{item.title}</h4>
+                    <span className="text-textsecondary font-bold text-sm tracking-wide uppercase">{item.company}</span>
                   </div>
                   
-                  <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium">
+                  <p className="text-textsecondary text-sm md:text-base leading-relaxed font-medium">
                     {item.description}
                   </p>
 
