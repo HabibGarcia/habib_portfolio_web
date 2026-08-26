@@ -2,19 +2,19 @@ export default function Experience() {
   const experienceData = [
     {
       id: 1,
-      date: 'May 2026 - June 2026',
-      title: 'Full-Stack Developer & Web Administrator Intern',
+      date: 'Mar 2026 - Jun 2026',
+      title: 'Practicante desarrollador Full Stack y administrador web',
       company: 'Essenzial',
-      description: 'Unification of a comprehensive digital platform for a medical society as an interim educational project. Development of custom plugins and backend synchronization. Integration of complex systems including e-commerce tools, learning management systems (LMS), and synchronization of CRM tools and ERP systems.',
+      description: 'Unificación de una plataforma digital integral para una sociedad médica como proyecto educativo interino. Desarrollo de plugins personalizados y sincronización del backend. Integración de sistemas complejos que incluyen herramientas de comercio electrónico, sistemas de gestión de aprendizaje (LMS) y sincronización de herramientas CRM y sistemas ERP.',
       color: 'bg-secondary',
       shadow: 'shadow-[0_0_15px_rgba(74,125,255,0.6)]'
     },
     {
       id: 2,
-      date: 'Dic 2025',
+      date: 'Sept 2024 - Jun 2026',
       title: 'Grado Superior en Desarrollo de Aplicaciones Web',
-      company: 'Formación Académica',
-      description: ':p',
+      company: 'IES San Juan de la Cruz',
+      description: 'Formación académica en desarrollo de aplicaciones web con énfasis en tecnologías modernas y prácticas de programación.',
       color: 'bg-primary',
       shadow: 'shadow-[0_0_15px_rgba(239,75,76,0.6)]'
     }
@@ -36,7 +36,7 @@ export default function Experience() {
         {/* La línea vertical central*/}
         <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gray-800 md:-translate-x-1/2 rounded-full"></div>
 
-        <div className="space-y-12">
+        <div className="space-y-8">
           {experienceData.map((item, index) => (
             <div 
               key={item.id} 
