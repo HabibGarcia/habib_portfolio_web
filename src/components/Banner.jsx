@@ -32,10 +32,10 @@ export default function Banner() {
         <nav className="relative z-20 flex justify-between items-center w-full">
           {/* Logo y Nombre */}
           <div className="flex items-center gap-4">
-            <div className="w-8 h-8 rounded-sm"><img src="/logo_portfolio.png" alt="Logo Habib" /></div>
-            <span className="font-bold text-white text-sm tracking-widest uppercase drop-shadow-md">
+            <a href="/" className="w-8 h-8 rounded-sm"><img src="/logo_portfolio.png" alt="Logo Habib"  /></a>
+            <a href="/" className="font-bold text-white text-sm tracking-widest uppercase drop-shadow-md">
               Habib García
-            </span>
+            </a>
           </div>
 
           {/* Centro: Píldora de Navegación */}
