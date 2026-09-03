@@ -39,6 +39,21 @@ export default {
         return opacityValue !== undefined 
         ? `rgb(var(--color-darker) / ${opacityValue})` 
         : `rgb(var(--color-darker))`
+        },
+        darkerButton: ({ opacityValue }) => {
+        return opacityValue !== undefined 
+        ? `rgb(var(--color-darker-button) / ${opacityValue})` 
+        : `rgb(var(--color-darker-button))`
+        },
+        textmain: ({ opacityValue }) => {
+        return opacityValue !== undefined 
+        ? `rgb(var(--text-color) / ${opacityValue})` 
+        : `rgb(var(--text-color))`
+        },
+        textsecondary: ({ opacityValue }) => {
+        return opacityValue !== undefined 
+        ? `rgb(var(--text-color-secondary) / ${opacityValue})` 
+        : `rgb(var(--text-color-secondary))`
         }
       }
     },

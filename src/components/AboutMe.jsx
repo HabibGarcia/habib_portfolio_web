@@ -1,32 +1,32 @@
 export default function AboutMe() {
   return (
     <section id="about" className="py-10 px-4 max-w-5xl mx-auto mt-10">
-      <div className="flex flex-col md:flex-row gap-12 items-center">
+      <div className="flex flex-col md:flex-row gap-12 items-center justify-center">
         
         {/* Lado Izquierdo: Ilustración */}
-        <div className="w-full md:w-6/12 flex justify-center relative">
+        <div className="w-full md:w-7/12 relative flex justify-center items-center">
           {/* Fondo decorativo*/}
-          <div className="absolute inset-0 bg-secondary/30 blur-3xl rounded-full transform-translate-x-5 "></div>
+          <div className="absolute inset-0 bg-secondary/30 blur-3xl rounded-full transform-translate-x-5"></div>
           <img 
             src="/main_character.png" 
             alt="Ilustración de Habib" 
-            className="w-full h-auto object-cover relative z-10 animacion-flotar" 
+            className="w-full h-auto object-cover z-10 animacion-flotar" 
           />
         </div>
 
         {/* Lado Derecho: Caja de Texto*/}
-        <div className="w-full md:w-6/12 relative">
+        <div className="w-full md:w-5/12 relative flex flex-col gap-2">
           {/**Título About me derecho */}
-          <div className="flex justify-end mb-2 pl-10">
-            <div className="flex items-center gap-4 border-2 border-white/10 bg-black/40 backdrop-blur-md px-6 py-3 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-            <span className="text-secondary font-black text-xl animate-pulse">{'>'}</span>
-            <h3 className="text-2xl md:text-3xl font-black text-white tracking-widest uppercase">About Me</h3>
+          <div className="flex justify-end mb-4 md:mb-2 md:pl-10">
+            <div className="flex items-center gap-4 bg-background/90 backdrop-blur-md px-4 md:px-6 py-2 md:py-3 rounded-2xl transition-colors duration-500 shadow-[6px_6px_0_0_rgb(var(--text-color))]">
+              <span className="text-secondary font-black text-xl animate-pulse">{'>'}</span>
+              <h3 className="text-xl md:text-3xl font-black text-textmain tracking-widest uppercase">Sobre mí</h3>
+            </div>
           </div>
-        </div>
           {/* Contenedor principal con sombra dura y borde grueso */}
-          <div className="border-4 border-black rounded-xl bg-background/80 p-0 relative z-0 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] backdrop-blur-sm">
+          <div className="border-4 border-textmain rounded-xl bg-background/90 p-0 relative z-0 shadow-[6px_6px_0px_0px_rgba(var(--text-color-secondary)/0.2)] backdrop-blur-sm">
             {/* Barra superior estilo ventana */}
-            <div className="bg-primary border-b-4 rounded-t-lg border-black p-2 flex justify-between items-center px-4">
+            <div className="bg-primary border-b-4 rounded-t-lg border-textmain p-2 flex justify-between items-center px-4">
                {/* Detalles del "Tab" a la izquierda */}
                <div className="flex items-center gap-2"></div>
                {/* Botones de control a la derecha */}
@@ -39,20 +39,18 @@ export default function AboutMe() {
             {/* Contenido interior */}
             <div className="p-8 bg-transparent">
               <div className="space-y-5">
-                <p className="text-gray-200 text-sm md:text-base leading-relaxed">
-                  I am a Web Application Developer passionate about building digital solutions that are not only functionally robust but visually compelling. My journey blends technical Full-Stack expertise with formal training in Graphic Design, UX/UI, and corporate branding.
+                <p className="text-textsecondary text-sm md:text-base leading-relaxed">
+                  Soy un Desarrollador de Aplicaciones Web apasionado por crear soluciones digitales que no solo sean funcionalmente sólidas, sino también visualmente atractivas. Técnicamente combino mi formación en Desarrollo Full-Stack y Diseño Gráfico, UX/UI y branding corporativo.
                 </p>
-                <p className="text-gray-200 text-sm md:text-base leading-relaxed">
-                  Technically, I specialize in crafting customized web architectures. I enjoy diving into the backend to integrate complex systems, from connecting ERPs and CRMs to unifying E-commerce and learning management systems, ensuring that business workflows run efficiently.
+                <p className="text-textsecondary text-sm md:text-base leading-relaxed">
+                  Durante mis prácticas, participé en la creación de arquitecturas web personalizadas. Integraba sistemas de conexión de ERPs y CRMs hasta la unificación de E-commerce y sistemas de gestión de aprendizaje, asegurando flujos de trabajo eficientes.
                 </p>
-                <p className="text-gray-200 text-sm md:text-base leading-relaxed">
-                  What sets me apart is my background in sales and customer service. Working directly with the public taught me empathy, active listening, and how to anticipate user needs—skills that I now translate into creating accessible and engaging user interfaces.
+                <p className="text-textsecondary text-sm md:text-base leading-relaxed">
+                  Asimismo, mi experiencia en ventas y atención al cliente me ha enseñado a escuchar activamente y anticipar las necesidades de los usuarios, habilidades que aplico para crear interfaces accesibles y atractivas.
                 </p>
               </div>
             </div>
           </div>
-          {/* Acento visual luz*/}
-          {/**<div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[#EF4B4C] rounded-full -z-10 opacity-20 blur-2xl"></div> */}
         </div>
 
       </div>

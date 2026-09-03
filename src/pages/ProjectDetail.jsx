@@ -1,9 +1,17 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link, Navigate} from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { projectsData } from '../data/portfolioData';
+import Navbar from '../components/Navbar';  
+import Footer from '../components/Footer'
 
 export default function ProjectDetail() {
   const { id } = useParams();
+  const [zoomedImage, setZoomedImage] = useState(null);
   
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   // Buscamos por id
   const project = projectsData.find(p => p.id === id);
 
@@ -12,39 +20,63 @@ export default function ProjectDetail() {
     return <Navigate to="/" />;
   }
 
+  // Función para formatear texto de terminal (`)
+  const formatTerminalText = (text) => {
+    if (!text) return null;
+    const parts = text.split('`');
+    return parts.map((part, index) => {
+      if (index % 2 !== 0) {
+        return (
+          <span 
+            key={index} 
+            className="font-mono text-xs md:text-sm bg-background border-2 border-darker text-secondary px-2 py-0.5 mx-1 rounded-md shadow-[2px_2px_0_0_rgb(var(--color-darker))] font-bold"
+          >
+            {part}
+          </span>
+        );
+      }
+      return part;
+    });
+  };
   return (
-    <div className="relative min-h-screen font-sans bg-background">
+    <div className="relative min-h-screen font-sans bg-background transition-colors duration-500">
       
-      {/* FONDO DE REJILLA GLOBAL*/}
-      <div className="fixed inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      {/* fondo cp Home.jsx*/}
+      <div className="fixed inset-0 z-0 h-full w-full bg-[linear-gradient(to_right,rgb(var(--text-color)/0.15)_2px,transparent_1px),linear-gradient(to_bottom,rgb(var(--text-color)/0.15)_2px,transparent_1px)] bg-[size:40px_40px] transition-colors duration-500"></div>
 
-      {/* CONTENIDO PRINCIPAL */}
+      <Navbar />
+      {/*contenido Principal*/}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-12 md:py-20 flex flex-col gap-12">
-        
-        {/* NAVEGACIÓN SUPERIOR: Botón de Volver */}
+        {/* bttn back*/}
         <div className="flex items-center justify-between">
           <Link 
             to="/" 
-            className="group flex items-center gap-3 bg-[#1a1a1a] border-4 border-black px-6 py-2 rounded-xl shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-y-1 hover:translate-x-1 transition-all w-fit"
+            className="hidden md:flex w-10 h-10 rounded-lg bg-darker items-center justify-center hover:bg-white text-white hover:text-secondary shadow-[4px_4px_0_0_rgb(var(--text-color))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all gap-2"
+            aria-label="Volver al Dashboard"
           >
-            <span className="text-primary font-black text-xl group-hover:-translate-x-2 transition-transform">{'<-'}</span>
-            <span className="text-white font-bold tracking-widest uppercase text-sm">Volver al Dashboard</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-white hover:text-secondary group-hover:-translate-x-1 transition-transform">
+               <line x1="19" y1="12" x2="5" y2="12"></line>
+               <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
           </Link>
           
-          <span className="text-gray-500 font-mono font-bold tracking-widest">ID: {project.id}</span>
+          {/* Diseño mejorado del ID del proyecto */}
+          <div className="hidden md:flex w-60 h-10 rounded-lg bg-primary items-center justify-center font-bold hover:bg-white text-white hover:text-secondary shadow-[4px_4px_0_0_rgb(var(--text-color))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all gap-2">
+            ID: {project.id}
+          </div>
         </div>
 
         {/* CABECERA DEL PROYECTO */}
-        <div className="flex flex-col md:flex-row gap-10 items-end justify-between border-b-4 border-gray-800 pb-10">
+        <div className="flex flex-col md:flex-row gap-10 md:items-end justify-between pb-10 transition-colors duration-500">
           <div>
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">
+            <h1 className="text-5xl md:text-7xl font-black text-textmain tracking-tight mb-6 transition-colors duration-500">
               {project.title}
             </h1>
             <div className="flex flex-wrap gap-3">
               {project.tech.map((tech, index) => (
                 <span 
                   key={index} 
-                  className="bg-primary/10 border-2 border-primary text-primary px-4 py-1.5 rounded-full text-sm font-bold tracking-widest"
+                  className="font-mono text-xs md:text-sm font-bold tracking-widest mb-2 inline-block w-fit px-4 py-1 rounded-full border-2 border-secondary bg-secondary/5 text-secondary hover:bg-secondary hover:text-white hover:shadow-[0_0_8px_rgb(var(--color-secondary))] transition-all"
                 >
                   {tech}
                 </span>
@@ -52,63 +84,64 @@ export default function ProjectDetail() {
             </div>
           </div>
           
-          {/* Botones de Enlace*/}
-          <div className="flex gap-4">
-            {project.githubLink && (
-              <a href={project.githubLink} target="_blank" rel="noreferrer" className="bg-white hover:bg-gray-300 text-black border-4 border-black rounded-lg font-black text-base py-3 px-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-y-1 hover:translate-x-1 transition-all">
-                GitHub Repo
+          {/* Botones de Enlace Condicionales */}
+          <div className="flex gap-4 items-center justify-center">
+              {project.githubLink && (
+              <a href={project.githubLink} target="_blank" rel="noreferrer" className="flex w-40 h-10 rounded-lg bg-darker items-center justify-center font-bold hover:bg-white text-white hover:text-secondary shadow-[4px_4px_0_0_rgb(var(--text-color))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all gap-2">
+                Repo GitHub
               </a>
-            )}
-            {project.liveLink && (
-              <a href={project.liveLink} target="_blank" rel="noreferrer" className="bg-primary hover:bg-[#EF4B4C] text-white border-4 border-black rounded-lg font-black text-base py-3 px-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-y-1 hover:translate-x-1 transition-all">
-                Live Demo
+              )}
+              {project.liveLink && (
+              <a href={project.liveLink} target="_blank" rel="noreferrer" className="flex w-40 h-10 rounded-lg bg-primary items-center justify-center font-bold hover:bg-white text-white hover:text-secondary shadow-[4px_4px_0_0_rgb(var(--text-color))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all gap-2">
+                Ver Demo
               </a>
-            )}
-          </div>
+              )}
+            </div>
         </div>
 
-        {/* ZONA DE ANÁLISIS TÉCNICO*/}
-        <div className="border-4 border-black rounded-xl bg-[#121212] p-0 relative z-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          
-          {/* Barra de la Ventana */}
-          <div className="bg-primary border-b-4 rounded-t-lg border-black p-2 flex justify-between items-center px-4">
+        {/* ventana principal cp Projects.jsx*/}
+        <div className="border-4 border-textmain rounded-xl bg-background/80 p-0 relative z-0 shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] transition-colors duration-500">
+          <div className="bg-primary border-b-4 rounded-t-lg border-textmain p-2 flex justify-between items-center px-4 transition-colors duration-500">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-white rounded-full border border-black shadow-[1px_1px_0_0_rgba(0,0,0,1)] animate-pulse"></div>
-              <span className="font-bold text-white text-sm tracking-wide">System_Analysis.md</span>
-            </div>
+              <div className="w-3 h-3 bg-white rounded-full border border-textmain shadow-[1px_1px_0_0_rgb(var(--text-color-secondary))]"></div>
+              <span className="font-bold text-white text-xs md:text-sm tracking-wide">Analisis_Sistema.md</span>
+           </div>
             <div className="flex gap-2">
-              <div className="w-5 h-5 border-2 border-black bg-white flex items-center justify-center font-bold text-xs">_</div>
-              <div className="w-5 h-5 border-2 border-black bg-white flex items-center justify-center font-bold text-xs">X</div>
+              <div className="w-5 h-5 border-2 border-black bg-white flex items-center justify-center font-bold text-xs cursor-pointer hover:bg-gray-200">_</div>
+              <div className="w-5 h-5 border-2 border-black bg-white flex items-center justify-center font-bold text-xs cursor-pointer hover:bg-black hover:text-white transition-colors">X</div>
             </div>
           </div>
 
-          <div className="p-8 md:p-12 flex flex-col md:flex-row gap-12 items-start">
+          <div className="p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center">
             
-            {/* Lado Izquierdo: Ilustración del personaje*/}
+            {/* Lado Izquierdo: Ilustración del personaje */}
             <div className="w-full md:w-1/3 flex justify-center">
               <div className="relative">
                 <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-110"></div>
                 <img 
                   src={project.characterImg} 
                   alt="Ilustración del Proyecto" 
-                  className="w-full max-w-[300px] h-auto object-contain relative z-10 drop-shadow-[8px_8px_0_rgba(0,0,0,1)]"
+                  className="w-full max-w-[300px] h-auto object-contain relative z-10"
                 />
               </div>
             </div>
 
             {/* Lado Derecho: Textos Descriptivos */}
             <div className="w-full md:w-2/3 flex flex-col gap-8">
-              
-              <div>
-                <h3 className="text-2xl font-black text-white mb-3 tracking-tight border-b-2 border-gray-800 pb-2 inline-block">01. Overview</h3>
-                <p className="text-gray-300 text-lg leading-relaxed font-medium">
+              <div className="mb-6">
+                <h3 className="text-2xl font-black text-textmain mb-1 tracking-tight pb-2 inline-block">
+                  Descripción General del Proyecto
+                </h3>
+                <p className="text-textsecondary text-md leading-relaxed transition-colors duration-500">
                   {project.longDescription || project.description}
                 </p>
               </div>
 
               <div>
-                <h3 className="text-2xl font-black text-[#EF4B4C] mb-3 tracking-tight border-b-2 border-gray-800 pb-2 inline-block">02. Challenges & Solutions</h3>
-                <p className="text-gray-300 text-lg leading-relaxed font-medium">
+                <h3 className="text-2xl font-black text-secondary mb-1 tracking-tight pb-2 inline-block">
+                    Retos y Soluciones
+                </h3>
+                <p className="text-textsecondary text-md leading-relaxed transition-colors duration-500">
                   {project.challenges || "Documentación de retos en progreso..."}
                 </p>
               </div>
@@ -117,39 +150,100 @@ export default function ProjectDetail() {
           </div>
         </div>
 
-        {/* GALERÍA DE PANTALLAS (Ampliada) */}
+        {/* contenido extra */}
+        {project.extraContent && project.extraContent.length > 0 && (
+          <div className="flex flex-col gap-10 mt-8 mb-4 max-w-5xl mx-auto md:mx-0">
+            {project.extraContent.map((section, index) => (
+              <div key={index}>
+                <h3 className="text-lg md:text-xl font-black text-white bg-primary backdrop-blur-md px-4 md:px-6 py-2 md:py-3 mb-4 rounded-2xl transition-colors duration-500 shadow-[6px_6px_0_0_rgb(var(--text-color))] w-fit">
+                  {section.subtitle}
+                </h3>
+                <p className="text-textsecondary text-base md:text-lg leading-relaxed mb-4 transition-colors duration-500">
+                  {formatTerminalText(section.text)}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* galería */}
         <div>
-          <h3 className="text-3xl font-black text-white tracking-widest uppercase mb-8 mt-10">Interface Preview</h3>
+          <div className="flex justify-end mb-4 md:mb-8 md:pl-10">
+            <div className="flex items-center gap-4 bg-background/90 backdrop-blur-md px-4 md:px-6 py-2 md:py-3 rounded-2xl transition-colors duration-500 shadow-[6px_6px_0_0_rgb(var(--text-color))]">
+              <h3 className="text-xl md:text-3xl font-black text-textmain tracking-widest uppercase">Galería de Interfaces</h3>
+            </div>
+          </div>
           
-          {/* Mostramos las 3 imágenes en un formato tipo "masonry" o cuadrícula asimétrica */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            {/* Imagen Principal (Ocupa dos columnas si es escritorio) */}
-            <div className="md:col-span-2 border-4 border-black rounded-xl overflow-hidden bg-[#1a1a1a] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-              <img src={project.images[0]} alt="Vista Principal" className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" />
+            {/* Imagen Principal */}
+            <div className="md:col-span-2 border-4 border-textmain rounded-xl overflow-hidden bg-background/80 shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] transition-colors duration-500 cursor-zoom-in group">
+              <img 
+                src={project.images[0]} 
+                alt="Vista Principal" 
+                onClick={() => setZoomedImage(project.images[0])}
+                className="w-full h-auto object-cover opacity-95 group-hover:opacity-100 transition-opacity"
+              />
             </div>
 
             {/* Imagen 2 */}
-            <div className="border-4 border-black rounded-xl overflow-hidden bg-[#1a1a1a] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <img src={project.images[1]} alt="Vista Secundaria" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" />
+            <div className="border-4 border-textmain rounded-xl overflow-hidden bg-background/80 shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] transition-colors duration-500 cursor-zoom-in group">
+              <img 
+                src={project.images[1]} 
+                alt="Vista Secundaria" 
+                onClick={() => setZoomedImage(project.images[1])}
+                className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-opacity"  
+                />
             </div>
 
             {/* Imagen 3 */}
-            <div className="border-4 border-black rounded-xl overflow-hidden bg-[#1a1a1a] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <img src={project.images[2]} alt="Detalle" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" />
+            <div className="border-4 border-textmain rounded-xl overflow-hidden bg-background/80 shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] transition-colors duration-500 cursor-zoom-in group">
+              <img 
+                src={project.images[2]} 
+                alt="Detalle" 
+                onClick={() => setZoomedImage(project.images[2])}
+                className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-opacity" 
+              />
             </div>
-
           </div>
         </div>
-        
-        {/* Footer interno para la página de detalle */}
-        <div className="mt-20 border-t-2 border-gray-800/80 pt-8 pb-10 text-center">
-           <p className="text-gray-500 font-mono text-sm font-bold">
-             © {new Date().getFullYear()} Habib. {project.title} Project.
-           </p>
-        </div>
-
       </div>
+      <div className="relative z-10">
+              <Footer />
+      </div>
+      {/* MODAL DE IMAGEN AMPLIADA */}
+      {zoomedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-zoom-out transition-all duration-300"
+          onClick={() => setZoomedImage(null)} 
+        >
+          <div 
+            className="relative max-w-6xl w-full border-4 border-textmain rounded-xl overflow-hidden shadow-[8px_8px_0_0_rgb(var(--color-darker))] bg-background cursor-default flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Barra de la ventana */}
+            <div className="bg-primary border-b-4 border-textmain p-2 flex justify-between items-center px-4">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-white text-sm tracking-wide">Image_Viewer.exe</span>
+              </div>
+              <button 
+                onClick={() => setZoomedImage(null)}
+                className="w-6 h-6 border-2 border-textmain bg-background flex items-center justify-center font-bold text-xs text-textmain hover:bg-textmain hover:text-white transition-colors"
+              >
+                X
+              </button>
+            </div>
+            
+            {/* Imagen ampliada */}
+            <div className="p-2 md:p-4 flex justify-center bg-background/20">
+              <img 
+                src={zoomedImage} 
+                alt="Ampliación"  
+                className="w-full h-auto max-h-[75vh] object-contain rounded-md"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
