@@ -1,11 +1,17 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link, Navigate} from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { projectsData } from '../data/portfolioData';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar';  
 import Footer from '../components/Footer'
 
 export default function ProjectDetail() {
   const { id } = useParams();
+  const [zoomedImage, setZoomedImage] = useState(null);
   
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   // Buscamos por id
   const project = projectsData.find(p => p.id === id);
 
@@ -14,6 +20,24 @@ export default function ProjectDetail() {
     return <Navigate to="/" />;
   }
 
+  // Función para formatear texto de terminal (`)
+  const formatTerminalText = (text) => {
+    if (!text) return null;
+    const parts = text.split('`');
+    return parts.map((part, index) => {
+      if (index % 2 !== 0) {
+        return (
+          <span 
+            key={index} 
+            className="font-mono text-xs md:text-sm bg-background border-2 border-darker text-secondary px-2 py-0.5 mx-1 rounded-md shadow-[2px_2px_0_0_rgb(var(--color-darker))] font-bold"
+          >
+            {part}
+          </span>
+        );
+      }
+      return part;
+    });
+  };
   return (
     <div className="relative min-h-screen font-sans bg-background transition-colors duration-500">
       
@@ -43,7 +67,7 @@ export default function ProjectDetail() {
         </div>
 
         {/* CABECERA DEL PROYECTO */}
-        <div className="flex flex-col md:flex-row gap-10 md:items-end justify-between border-b-8 border-textsecondary/30 pb-10 transition-colors duration-500">
+        <div className="flex flex-col md:flex-row gap-10 md:items-end justify-between pb-10 transition-colors duration-500">
           <div>
             <h1 className="text-5xl md:text-7xl font-black text-textmain tracking-tight mb-6 transition-colors duration-500">
               {project.title}
@@ -88,7 +112,7 @@ export default function ProjectDetail() {
             </div>
           </div>
 
-          <div className="p-8 md:p-12 flex flex-col md:flex-row gap-12 items-start">
+          <div className="p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center">
             
             {/* Lado Izquierdo: Ilustración del personaje */}
             <div className="w-full md:w-1/3 flex justify-center">
@@ -128,14 +152,14 @@ export default function ProjectDetail() {
 
         {/* contenido extra */}
         {project.extraContent && project.extraContent.length > 0 && (
-          <div className="flex flex-col gap-10 mt-8 mb-4 mx-auto md:mx-0 ">
+          <div className="flex flex-col gap-10 mt-8 mb-4 max-w-5xl mx-auto md:mx-0">
             {project.extraContent.map((section, index) => (
               <div key={index}>
-                <h3 className="text-xl font-black text-white mb-4 pb-4 pt-4 max-w-lg pl-4 rounded-lg bg-primary">
+                <h3 className="text-lg md:text-xl font-black text-white bg-primary backdrop-blur-md px-4 md:px-6 py-2 md:py-3 mb-4 rounded-2xl transition-colors duration-500 shadow-[6px_6px_0_0_rgb(var(--text-color))] w-fit">
                   {section.subtitle}
                 </h3>
-                <p className="text-textsecondary text-md mb-4 leading-relaxed transition-colors duration-500">
-                  {section.text}
+                <p className="text-textsecondary text-base md:text-lg leading-relaxed mb-4 transition-colors duration-500">
+                  {formatTerminalText(section.text)}
                 </p>
               </div>
             ))}
@@ -152,18 +176,33 @@ export default function ProjectDetail() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Imagen Principal */}
-            <div className="md:col-span-2 border-4 border-darker rounded-xl overflow-hidden bg-background shadow-[8px_8px_0px_0px_rgb(var(--color-darker))] transition-colors duration-500">
-              <img src={project.images[0]} alt="Vista Principal" className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" />
+            <div className="md:col-span-2 border-4 border-textmain rounded-xl overflow-hidden bg-background/80 shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] transition-colors duration-500 cursor-zoom-in group">
+              <img 
+                src={project.images[0]} 
+                alt="Vista Principal" 
+                onClick={() => setZoomedImage(project.images[0])}
+                className="w-full h-auto object-cover opacity-95 group-hover:opacity-100 transition-opacity"
+              />
             </div>
 
             {/* Imagen 2 */}
-            <div className="border-4 border-darker rounded-xl overflow-hidden bg-background shadow-[6px_6px_0px_0px_rgb(var(--color-darker))] transition-colors duration-500">
-              <img src={project.images[1]} alt="Vista Secundaria" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" />
+            <div className="border-4 border-textmain rounded-xl overflow-hidden bg-background/80 shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] transition-colors duration-500 cursor-zoom-in group">
+              <img 
+                src={project.images[1]} 
+                alt="Vista Secundaria" 
+                onClick={() => setZoomedImage(project.images[1])}
+                className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-opacity"  
+                />
             </div>
 
             {/* Imagen 3 */}
-            <div className="border-4 border-darker rounded-xl overflow-hidden bg-background shadow-[6px_6px_0px_0px_rgb(var(--color-darker))] transition-colors duration-500">
-              <img src={project.images[2]} alt="Detalle" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" />
+            <div className="border-4 border-textmain rounded-xl overflow-hidden bg-background/80 shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[6px_6px_0px_0px_rgb(var(--text-color-secondary)/0.2)] transition-colors duration-500 cursor-zoom-in group">
+              <img 
+                src={project.images[2]} 
+                alt="Detalle" 
+                onClick={() => setZoomedImage(project.images[2])}
+                className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-opacity" 
+              />
             </div>
           </div>
         </div>
@@ -171,6 +210,40 @@ export default function ProjectDetail() {
       <div className="relative z-10">
               <Footer />
       </div>
+      {/* MODAL DE IMAGEN AMPLIADA */}
+      {zoomedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-zoom-out transition-all duration-300"
+          onClick={() => setZoomedImage(null)} 
+        >
+          <div 
+            className="relative max-w-6xl w-full border-4 border-textmain rounded-xl overflow-hidden shadow-[8px_8px_0_0_rgb(var(--color-darker))] bg-background cursor-default flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Barra de la ventana */}
+            <div className="bg-primary border-b-4 border-textmain p-2 flex justify-between items-center px-4">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-white text-sm tracking-wide">Image_Viewer.exe</span>
+              </div>
+              <button 
+                onClick={() => setZoomedImage(null)}
+                className="w-6 h-6 border-2 border-textmain bg-background flex items-center justify-center font-bold text-xs text-textmain hover:bg-textmain hover:text-white transition-colors"
+              >
+                X
+              </button>
+            </div>
+            
+            {/* Imagen ampliada */}
+            <div className="p-2 md:p-4 flex justify-center bg-background/20">
+              <img 
+                src={zoomedImage} 
+                alt="Ampliación"  
+                className="w-full h-auto max-h-[75vh] object-contain rounded-md"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

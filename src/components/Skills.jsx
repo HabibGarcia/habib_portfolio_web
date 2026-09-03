@@ -26,7 +26,7 @@ export default function Skills() {
     'Planner',
     'Photoshop',
     'Illustrator',
-    'Affinity Designer',
+    'Affinity',
     'Krita',
     'Figma',
     'JSON'
@@ -62,37 +62,53 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* Carrusel de Herramientas Extra */}
+      {/* Extra tools */}
       <div className="border-4 border-textmain rounded-xl bg-transparent p-0 relative shadow-[4px_4px_0px_0px_rgb(var(--text-color-secondary)/0.2)] md:shadow-[8px_8px_0px_0px_rgb(var(--text-color-secondary)/0.2)] backdrop-blur-sm transition-colors duration-500">
         
         {/* Barra superior estilo ventana */}
-        <div className="bg-secondary border-b-4 rounded-t-lg border-textmain p-2 flex justify-between items-center px-4 transition-colors duration-500">
+        <div className="bg-primary border-b-4 rounded-t-lg border-textmain p-2 flex justify-between items-center px-4 transition-colors duration-500">
            <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-white rounded-full border border-textmain shadow-[1px_1px_0_0_rgb(var(--text-color-secondary))]"></div>
-              <span className="font-bold text-white text-xs md:text-sm tracking-wide">Extra_Tools.exe</span>
+              <span className="font-bold text-white text-xs md:text-sm tracking-wide">powershell.exe - Extra_Tools</span>
            </div>
            
            <div className="flex gap-2">
              <div className="w-5 h-5 border-2 border-black bg-white flex items-center justify-center font-bold text-xs cursor-pointer hover:bg-gray-200">_</div>
-                 <div className="w-5 h-5 border-2 border-black bg-white flex items-center justify-center font-bold text-xs cursor-pointer hover:bg-black hover:text-white transition-colors">X</div>
+             <div className="w-5 h-5 border-2 border-black bg-white flex items-center justify-center font-bold text-xs cursor-pointer hover:bg-black hover:text-white transition-colors">X</div>
            </div>
         </div>
 
-        {/* Interior del carrusel */}
-        <div className="p-4 bg-background/70 overflow-hidden relative rounded-b-lg transition-colors duration-500">
+        {/* Interior de la Terminal */}
+        <div className="p-5 md:p-8 bg-background/30 overflow-hidden relative rounded-b-lg transition-colors duration-500 font-mono text-xs md:text-sm flex flex-col gap-4">
           
-          <div className="w-full inline-flex flex-nowrap [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-            <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 animate-infinite-scroll py-2">
-              {[...extraTools, ...extraTools, ...extraTools].map((tool, index) => (
-                <li 
-                  key={index} 
-                  // Diseño terminal adaptado al tema dinámico
-                  className="whitespace-nowrap border-2 border-darker/50 bg-background text-textsecondary font-mono px-4 md:px-6 py-2 rounded-md shadow-[0_0_10px_rgb(var(--color-primary)/0.1)] text-xs md:text-sm tracking-widest hover:text-primary hover:border-primary hover:bg-primary/5 transition-colors cursor-default"
-                >
-                  <span className="text-secondary mr-2 font-black">{'>'}</span>{tool}
-                </li>
-              ))}
-            </ul>
+          {/* Comando 1*/}
+          <div className="flex flex-col md:flex-row md:items-center gap-1">
+            <span className="text-secondary font-bold break-all">PS C:\Users\habib\Desktop\\portafolio-habib&gt;</span> 
+            <span className="text-textmain whitespace-nowrap">cd extratools</span>
+          </div>
+
+          {/* Comando 2*/}
+          <div className="flex flex-col md:flex-row md:items-center gap-1">
+            <span className="text-secondary font-bold break-all">PS C:\Users\habib\Desktop\\portafolio-habib\extratools&gt;</span> 
+            <span className="text-textmain whitespace-nowrap">ls</span>
+          </div>
+          
+          {/* ls*/}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-3 my-2 pl-2 md:pl-4 border-l-2 border-primary/30">
+            {extraTools.map((tool, index) => (
+              <div key={index} className="flex items-center gap-3 group cursor-default">
+                <span className="text-primary opacity-60 group-hover:opacity-100 transition-opacity">-a----</span>
+                <span className="text-textsecondary font-bold group-hover:text-primary transition-colors">
+                  {tool.toLowerCase().replace(/\s+/g, '_')}.exe
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Input final*/}
+          <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mt-2">
+            <span className="text-secondary font-bold break-all">PS C:\Users\habib\Desktop\\portafolio-habib\extratools&gt;</span>
+            <span className="w-2.5 h-4 bg-primary animate-pulse inline-block mt-1 md:mt-0"></span>
           </div>
 
         </div>

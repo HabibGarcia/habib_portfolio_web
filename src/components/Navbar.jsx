@@ -22,25 +22,25 @@ export default function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/90 backdrop-blur-md border-b-4 border-darker transition-colors duration-500 shadow-[0_4px_30px_rgb(var(--color-primary)/0.1)]">
+    <header className="sticky top-0 z-50 w-full bg-darkerButton/60 backdrop-blur-md border-b-4 border-darker transition-colors duration-500 shadow-[0_4px_30px_rgb(var(--color-primary)/0.1)]">
       <div className="max-w-[1450px] mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
         
         {/* LOGO Y NOMBRE */}
-        <a href="#" onClick={closeMenu} className="flex items-center gap-4 group">
-          <div className="w-10 h-10 rounded-sm overflow-hidden border-2 border-transparent group-hover:border-primary transition-colors">
-            <img src="/logo_portfolio.png" alt="Logo Habib" className="w-full h-full object-cover" />
+        <a href="/" onClick={closeMenu} className="flex items-center gap-4 group">
+          <div className="w-10 h-10 rounded-sm overflow-hidden border-2 border-transparent">
+            <img src="/logo_portfolio.png" alt="Logo Habib" className="w-full h-full object-cover" href="/"/>
           </div>
-          <span className="font-bold text-textmain text-sm md:text-base tracking-widest uppercase drop-shadow-md group-hover:text-primary transition-colors duration-300">
+          <span className="font-bold text-textmain text-sm md:text-base tracking-widest uppercase" href="/">
             Habib García
           </span>
         </a>
 
         {/* NAVEGACIÓN DESKTOP */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#about" className="text-textmain hover:text-secondary hover:font-bold text-sm font-medium transition-colors">Sobre mí</a>
-          <a href="#projects" className="text-textmain hover:text-secondary hover:font-bold text-sm font-medium transition-colors">Proyectos</a>
-          <a href="#experience" className="text-textmain hover:text-secondary hover:font-bold text-sm font-medium transition-colors">Experiencia</a>
-          <a href="#art" className="text-textmain hover:text-secondary hover:font-bold text-sm font-medium transition-colors">Arte</a>
+          <a href="/#about" className="text-textmain hover:text-secondary hover:font-bold text-sm font-medium transition-colors">Sobre mí</a>
+          <a href="/#projects" className="text-textmain hover:text-secondary hover:font-bold text-sm font-medium transition-colors">Proyectos</a>
+          <a href="/#experience" className="text-textmain hover:text-secondary hover:font-bold text-sm font-medium transition-colors">Experiencia</a>
+          <a href="/#art" className="text-textmain hover:text-secondary hover:font-bold text-sm font-medium transition-colors">Arte</a>
         </nav>
 
         {/* BOTONES DESKTOP (CV + TEMA) */}
@@ -48,7 +48,7 @@ export default function Navbar() {
           <a 
             href="/CV_Habib_Garcia.pdf"
             download="CV_Habib_Garcia.pdf"
-            className="bg-primary hover:bg-background text-white hover:text-primary border-2 border-darkerButton rounded-lg font-bold text-sm py-2 px-4 shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all flex items-center gap-2"
+            className="bg-primary hover:bg-background text-white hover:text-primary rounded-lg font-bold text-sm py-2 px-4 shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all flex items-center gap-2"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             CV
@@ -56,7 +56,7 @@ export default function Navbar() {
           
           <button 
             onClick={toggleTheme}
-            className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center border-2 border-darkerButton hover:bg-background text-white hover:text-primary transition-transform shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px]"
+            className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center hover:bg-background text-white hover:text-secondary transition-transform shadow-[4px_4px_0_0_rgb(var(--color-darker-button))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px]"
             aria-label="Cambiar Tema"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -94,13 +94,13 @@ export default function Navbar() {
             <a href="#about" onClick={closeMenu} className="text-textmain font-bold text-lg hover:text-primary transition-colors flex items-center gap-2">
               <span className="text-secondary">{'>'}</span> Sobre mí
             </a>
-            <a href="#projects" onClick={closeMenu} className="text-textmain font-bold text-lg hover:text-primary transition-colors flex items-center gap-2">
+            <a href="/#projects" onClick={closeMenu} className="text-textmain font-bold text-lg hover:text-primary transition-colors flex items-center gap-2">
               <span className="text-secondary">{'>'}</span> Proyectos
             </a>
-            <a href="#experience" onClick={closeMenu} className="text-textmain font-bold text-lg hover:text-primary transition-colors flex items-center gap-2">
+            <a href="/#experience" onClick={closeMenu} className="text-textmain font-bold text-lg hover:text-primary transition-colors flex items-center gap-2">
               <span className="text-secondary">{'>'}</span> Experiencia
             </a>
-            <a href="#art" onClick={closeMenu} className="text-textmain font-bold text-lg hover:text-primary transition-colors flex items-center gap-2">
+            <a href="/#art" onClick={closeMenu} className="text-textmain font-bold text-lg hover:text-primary transition-colors flex items-center gap-2">
               <span className="text-secondary">{'>'}</span> Arte
             </a>
           </nav>

@@ -33,7 +33,7 @@ export default function Banner() {
           {/* Logo y Nombre */}
           <div className="flex items-center gap-4">
             <a href="/" className="w-8 h-8 rounded-sm"><img src="/logo_portfolio.png" alt="Logo Habib"  /></a>
-            <a href="/" className="font-bold text-white text-sm tracking-widest uppercase drop-shadow-md">
+            <a href="/" className="font-bold text-white text-sm md:text-base tracking-widest uppercase drop-shadow-md group-hover:text-primary transition-colors duration-300">
               Habib García
             </a>
           </div>
@@ -62,7 +62,7 @@ export default function Banner() {
             {/* Toggle Switch del Sol */}
             <button 
               onClick={toggleTheme}
-              className="hidden md:flex w-10 h-10 rounded-lg bg-primary items-center justify-center hover:bg-white text-white hover:text-secondary shadow-[4px_4px_0_0_rgb(var(--text-color))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px] transition-all gap-2" aria-label="Toggle Theme"
+              className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center hover:bg-white text-white hover:text-secondary transition-transform shadow-[4px_4px_0_0_rgb(var(--text-color))] hover:shadow-none hover:translate-y-[4px] hover:translate-x-[4px]" aria-label="Toggle Theme"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
